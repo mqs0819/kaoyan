@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "cookie-parser": "1.4.6",
+    "cors": "2.8.5",
+    "express": "4.18.2",
+    "express-session": "1.17.3",
+    "http-assert": "1.5.0",
+    "jsonwebtoken": "9.0.0",
+    "mongoose": "7.0.1",
+    "require-all": "3.0.0",
+    "svg-captcha": "1.4.0"
+  }
+}
