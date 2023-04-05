@@ -1,23 +1,25 @@
 <template>
   <div>
     <div class="kz-head">
-      <van-row class="p-3">
-        <van-col span="5" class="mt-3">
-          <div class="fs-xl text-bold">226天</div>
-          <div class="fs-xxs text-grey">距2024考研</div>
-        </van-col>
-        <van-col span="16">
-          <van-search v-model="value" placeholder="请输入搜索关键词" />
-        </van-col>
-        <van-col span="3" class="mt-2 pl-2">
-          <van-image
-            round
-            width="3rem"
-            height="3rem"
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
-          />
-        </van-col>
-      </van-row>
+      <van-sticky>
+        <van-row class="p-3">
+          <van-col span="5" class="mt-3">
+            <div class="fs-xl text-bold">226天</div>
+            <div class="fs-xxs text-grey">距2024考研</div>
+          </van-col>
+          <van-col span="16">
+            <van-search v-model="value" placeholder="请输入搜索关键词" />
+          </van-col>
+          <van-col span="3" class="mt-2 pl-2">
+            <van-image
+              round
+              width="3rem"
+              height="3rem"
+              src="https://img01.yzcdn.cn/vant/cat.jpeg"
+            />
+          </van-col>
+        </van-row>
+      </van-sticky>
     </div>
     <!-- 首部导航结束 -->
     <div class="kz-swipe m-3">
@@ -133,6 +135,17 @@
         </div>
       </div>
     </div>
+    <!-- 特别推荐结束 -->
+    <div class="pl-3 pr-3">
+      <h3>新手指南</h3>
+      <div class="guide p-4">
+        <div v-for="(item, index) in guide_item" :key="index">
+          <div class="guide-item w-100 text-ellipsis">
+            <span class="warm fs-xl">{{ index + 1 }}</span> {{ item.title }}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -180,12 +193,36 @@ export default {
           title: "网上调剂",
         },
       ],
+      guide_item: [
+        {
+          title:
+            "调剂干货|这10种情况，考研er要注意调剂干货|这10种情况，考研er要注意",
+          url: "",
+        },
+        { title: "调剂干货|这10种情况，考研er要注意", url: "" },
+        { title: "调剂干货|这10种情况，考研er要注意", url: "" },
+        {
+          title:
+            "调剂干货|这10种情况，考研er要注意调剂干货|这10种情况，考研er要注意",
+          url: "",
+        },
+        {
+          title:
+            "调剂干货|这10种情况，考研er要注意调剂干货|这10种情况，考研er要注意",
+          url: "",
+        },
+      ],
     };
   },
 };
 </script>
 
 <style lang="scss">
+.kz-head {
+  .van-sticky {
+    background-color: #fff;
+  }
+}
 .my-swipe {
   border-radius: 2rem;
 }
@@ -253,9 +290,21 @@ export default {
       width: 100%;
       img {
         width: 12rem;
-        border-radius: 0.6rem;
+        border-radius: 0.4rem;
       }
     }
+  }
+}
+
+.guide {
+  height: 12rem;
+	border-radius: .4rem;
+  background: linear-gradient(#dae9fe, #fff);
+  .guide-item {
+    line-height: 2rem;
+		.warm {
+			color: #DB9460;
+		}
   }
 }
 </style>
