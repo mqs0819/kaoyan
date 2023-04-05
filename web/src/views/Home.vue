@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="kz-head">
+    <div class="kz-header">
       <van-sticky>
-        <van-row class="p-3">
+        <van-row class="p-3" style="background-color: #fff">
           <van-col span="5" class="mt-3">
             <div class="fs-xl text-bold">226天</div>
             <div class="fs-xxs text-grey">距2024考研</div>
@@ -38,11 +38,18 @@
       </van-swipe>
     </div>
     <!-- 轮播图结束 -->
+    <!-- 导航分类模块开始 -->
     <div class="kz-grid">
-      <van-grid column-num="5">
-        <van-grid-item v-for="(item, index) in nav_icon" :key="index">
-          <img :src="item.imgUrl" alt="" class="kz-ten-icon" />
-          <div>{{ item.title }}</div>
+      <van-grid column-num="5" clickable>
+        <van-grid-item
+          v-for="(item, index) in nav_icon"
+          :key="index"
+          :url="item.httpUrl"
+        >
+          <div>
+            <img :src="item.imgUrl" alt="" class="kz-ten-icon" />
+            <div>{{ item.title }}</div>
+          </div>
         </van-grid-item>
       </van-grid>
     </div>
@@ -136,14 +143,25 @@
       </div>
     </div>
     <!-- 特别推荐结束 -->
+    <!-- 新手指南模块开始 -->
     <div class="pl-3 pr-3">
       <h3>新手指南</h3>
       <div class="guide p-4">
         <div v-for="(item, index) in guide_item" :key="index">
-          <div class="guide-item w-100 text-ellipsis">
-            <span class="warm fs-xl">{{ index + 1 }}</span> {{ item.title }}
-          </div>
+          <a href="">
+            <div class="guide-item w-100 text-ellipsis">
+              <span class="warm fs-xl">{{ index + 1 }}</span> {{ item.title }}
+            </div>
+          </a>
         </div>
+      </div>
+    </div>
+    <!-- 新手指南模块结束 -->
+    <div class="footer p-4 mt-4">
+      <div class="text-grey">
+        <p>作者邮箱：iceorangewine@gmail.com</p>
+        <p>源码地址：https://github.com/mqs0819/kaoyan</p>
+        <p>Copyright © 2023 考研站信息服务平台</p>
       </div>
     </div>
   </div>
@@ -158,6 +176,7 @@ export default {
         {
           imgUrl: require("../assets/images/tbtj/bsml.png"),
           title: "硕士目录",
+          httpUrl: "/master",
         },
         {
           imgUrl: require("../assets/images/tbtj/cjcx.png"),
@@ -217,11 +236,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.kz-head {
-  .van-sticky {
-    background-color: #fff;
-  }
+<style lang="scss" scoped>
+.kz-header {
 }
 .my-swipe {
   border-radius: 2rem;
@@ -234,6 +250,9 @@ export default {
   // background-color: #39a9ed;
 }
 
+.kz-grid .van-grid-item {
+  text-align: center;
+}
 .kz-ten-icon {
   width: 2.6rem;
 }
@@ -244,22 +263,17 @@ export default {
   background-color: #f5f5f5;
   .hot-news-bl {
     height: 3rem;
-    .yz-img-bl {
-      width: 3rem;
-    }
   }
 }
 
 .hot-news-bl .yz-img-bl:after {
   content: "";
   display: inline-block;
-  width: 2px;
+  width: 1px;
   height: 2.907rem;
   background: #dcdada;
   position: absolute;
   right: 22.707rem;
-  top: 66%;
-  margin-top: -0.453rem;
 }
 
 .msg {
@@ -298,13 +312,18 @@ export default {
 
 .guide {
   height: 12rem;
-	border-radius: .4rem;
+  border-radius: 0.4rem;
   background: linear-gradient(#dae9fe, #fff);
   .guide-item {
     line-height: 2rem;
-		.warm {
-			color: #DB9460;
-		}
+    .warm {
+      color: #db9460;
+    }
   }
+}
+
+.footer {
+  margin-top: 5rem;
+  background-color: #282828;
 }
 </style>
