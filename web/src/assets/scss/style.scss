@@ -1,0 +1,231 @@
+@import './variables';
+
+// 重置样式
+* {
+	box-sizing: border-box;
+	outline: none;
+}
+ 
+html {
+	font-size: 13px;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 1.2em;
+	background:#ffffff;
+	-webkit-font-smoothing: antialiased; // 字体平滑
+}
+
+a {
+	color: #999;
+	text-decoration: none;
+}
+
+@each $colorKey,
+$color in $colors {
+
+	// 字体颜色
+	.text-#{$colorKey} {
+		color: $color;
+	}
+
+	// 背景色
+	.bg-#{$colorKey} {
+		background-color: $color;
+	}
+}
+
+.text-bold {
+	font-weight: 700;
+}
+
+// text align 位置
+@each $var in (left, center, right) {
+	.text-#{$var} {
+		text-align: $var;
+	}
+}
+
+@each $sizeKey,
+$size in $font-sizes {
+	.fs-#{$sizeKey} {
+		font-size: $size * $base-font-size;
+	}
+}
+
+// 字体省略
+.text-ellipsis {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap; // 禁止换行
+}
+
+// 宽度、高度
+.w-100 {
+	width: 100%;
+}
+
+.h-100 {
+	height: 100%;
+}
+
+// flex布局
+.d-flex {
+	display: flex;
+}
+
+.flex-column {
+	flex-direction: column;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+@each $key,
+$value in $flex-jc {
+	.jc-#{$key} {
+		justify-content: $value;
+	}
+}
+
+@each $key,
+$value in $flex-ai {
+	.ai-#{$key} {
+		align-items: $value;
+	}
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.flex-grow-1 {
+	flex-grow: 1;
+}
+
+@each $typeKey,
+$type in $spacing-types {
+
+	@each $sizeKey,
+	$size in $spacing-sizes {
+
+		// m-1 :{margin: 1rem;}
+		.#{$typeKey}-#{$sizeKey} {
+			#{$type}: $size * $spacing-base-size;
+		}
+	}
+}
+
+@each $typeKey,
+$type in $spacing-types {
+
+	@each $sizeKey,
+	$size in $spacing-sizes {
+
+		// mx-1 :{margin-left: 1rem; margin-right:1rem}
+		.#{$typeKey}x-#{$sizeKey} {
+			#{$type}-left: $size * $spacing-base-size;
+			#{$type}-right: $size * $spacing-base-size;
+		}
+
+		.#{$typeKey}y-#{$sizeKey} {
+			#{$type}-top: $size * $spacing-base-size;
+			#{$type}-bottom: $size * $spacing-base-size;
+		}
+	}
+}
+
+@each $typeKey,
+$type in $spacing-types {
+
+	@each $directionKey,
+	$direction in $spacing-directions {
+
+		@each $sizeKey,
+		$size in $spacing-sizes {
+			.#{$typeKey}#{$directionKey}-#{$sizeKey} {
+				// mt-1: {margin:top: 0.25rem;}
+				#{$type}-#{$direction}: $size * $spacing-base-size;
+			}
+		}
+	}
+}
+
+// 按钮
+.btn {
+	border: none;
+	border-radius: 0.1538rem;
+	font-size: map-get($font-sizes, 'sm');
+	padding: 0.2rem 0.6rem;
+}
+
+// 导航
+.nav {
+	display: flex;
+
+	.nav-item {
+		border-bottom: 3px solid transparent;
+		padding-bottom: 0.2rem;
+
+		&.active {
+			color: map-get($colors, 'primary');
+			border-bottom: 3px solid map-get($colors, 'primary');
+		}
+	}
+
+	&.nav-inverse {
+		.nav-item {
+			color: map-get($colors, 'white');
+
+			&.active {
+				border-bottom-color: map-get($colors, 'white');
+			}
+		}
+	}
+}
+
+// 精灵图
+// .sprite {
+// 	background: url(../images/index.png) no-repeat 0 0;
+// 	background-size: 28.8462rem;
+// 	display: inline-block;
+
+// 	&.sprite-news {
+// 		width: 1.7692rem;
+// 		height: 1.5385rem;
+// 		background-position: 63.546% 15.517%;
+// 	}
+
+// 	&.sprite-story {
+// 		width: 1.7692rem;
+// 		height: 1.5385rem;
+// 		background-position: 90.483% 15.614%;
+// 	}
+
+// 	&.sprite-store {
+// 		width: 1.7692rem;
+// 		height: 1.5385rem;
+// 		background-position: 36.746% 0.924%;
+// 	}
+
+// 	&.sprite-arrow {
+// 		width: 0.7692rem;
+// 		height: 0.7692rem;
+// 		background-position: 38.577% 52.076%;
+// 	}
+// }
+
+// 边框
+@each $dir in (top, right, bottom, left) {
+	.border-#{$dir} {
+		border-#{$dir}: 1px solid $border-color;
+	}
+}
+
+.text-border {
+	border: 1px solid $border-color;
+}

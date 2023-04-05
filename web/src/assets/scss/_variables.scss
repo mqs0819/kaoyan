@@ -1,0 +1,69 @@
+// 主题颜色
+$colors: (
+	"primary": #8060DA,
+	"danger": #EE0A24,
+	"white": #fff,
+	"light": #f9f9f9,
+	"light-1": #d4d4d4,
+	"grey": #999,
+	"grey-1": #666,
+	"dark": #222,
+	"dark-1": #333,
+	"black": #000,
+	"info": #066093
+);
+
+$border-color: map-get($colors, 'light-1');
+$spacing-base-size: 1rem;
+$base-font-size: 1rem;
+
+$font-sizes: (
+	xxs: 0.6154,
+	// 8px
+	xs: 0.7692,
+	// 10px 
+	sm: 0.9231,
+	// 12px
+	md: 1,
+	// 13px
+	lg: 1.0769,
+	// 14px
+	xl: 1.2308,
+	// 16px
+);
+
+$flex-ai: (
+	start: flex-start,
+	end: flex-end,
+	center: center,
+	stretch: stretch
+);
+
+$flex-jc: (
+	start: flex-start,
+	end: flex-end,
+	center:center,
+	between:space-between,
+	around:space-around,
+);
+
+// 主题样式 - 间距
+$spacing-types: (
+	m:margin,
+	p:padding
+);
+$spacing-directions: (
+	t:top,
+	r:right,
+	b:bottom,
+	l:left
+);
+
+$spacing-sizes: (
+	0: 0,
+	1: 0.25,
+	2: 0.5,
+	3: 1,
+	4: 1.5,
+	5: 3,
+);
